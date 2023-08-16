@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace Energy.DAL.Entities.Base
 {
-    public class Transformer : Entity
+
+    /// <summary>
+    /// Базовый трансформатор
+    /// </summary>
+    public class Transformer : BaseEnergyEntity
     {
-        public uint Number { get; set; }
 
         public string TransformerType { get; set; }
 
-        public DateTime VerificationDate { get; set; }
-
-        public Transformer(uint number, string transformerType, DateTime verificationDate) 
-            : base()
+        public Transformer(uint number, DateTime verificationDate, string transformerType) 
+            : base(number, verificationDate)
         {
-            Number = number;
             TransformerType = transformerType;
-            VerificationDate = verificationDate;
         }
 
     }

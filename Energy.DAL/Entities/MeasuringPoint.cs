@@ -7,16 +7,18 @@ using System.Threading.Tasks;
 
 namespace Energy.DAL.Entities
 {
-    public class MeasuringPoint : Entity
+
+    /// <summary>
+    /// Точка измерения электроэнергии
+    /// </summary>
+    public class MeasuringPoint : NamedEntity
     {
-        public string Name { get; set; } = null!;
 
         public DateTime StartDate { get; set; }
 
-        public MeasuringPoint(string name, DateTime startDate)
-            : base()
+        public MeasuringPoint(string name, DateTime startDate) 
+            : base(name)
         {
-            Name = name;
             StartDate = startDate;
         }
     }

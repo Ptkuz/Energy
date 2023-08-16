@@ -7,13 +7,16 @@ using System.Threading.Tasks;
 
 namespace Energy.DAL.Entities
 {
+    /// <summary>
+    /// Трансформатор тока
+    /// </summary>
     public class CurrentTransformer : Transformer
     {
 
         public string CTC { get; set; } = null!;
 
-        public CurrentTransformer(string cTC, uint number, string transformerType, DateTime verificationDate) 
-            : base(number, transformerType, verificationDate)
+        public CurrentTransformer(uint number, DateTime verificationDate, string transformerType, string cTC)
+            : base(number, verificationDate, transformerType)
         {
             CTC = cTC;
         }

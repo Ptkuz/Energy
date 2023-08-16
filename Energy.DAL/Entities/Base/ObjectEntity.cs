@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace Energy.DAL.Entities.Base
 {
-    public class Organization : Entity
+
+    /// <summary>
+    /// Базовая организация
+    /// </summary>
+    public class ObjectEntity : NamedEntity
     {
 
-        [Column("Name", Order = 3)]
-        public string Name { get; set; } = null!;
-
-        [Column("Address", Order = 4)]
+        [Column("Address", Order = 2)]
         public string Address { get; set; } = null!;
 
-        public Organization(string name, string address)
-            : base()
+        public ObjectEntity(string name, string address) 
+            : base(name)
         {
-            Name = name;
             Address = address;
         }
     }

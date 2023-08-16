@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace Energy.DAL.Entities
 {
+
+    /// <summary>
+    /// Организация
+    /// </summary>
     public class MainOrganization : Organization
     {
         public MainOrganization(string name, string address) 

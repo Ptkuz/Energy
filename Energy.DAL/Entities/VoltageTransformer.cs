@@ -7,17 +7,20 @@ using System.Threading.Tasks;
 
 namespace Energy.DAL.Entities
 {
+
+    /// <summary>
+    /// Трансформатор напряжения 
+    /// </summary>
     public class VoltageTransformer : Transformer
     {
 
         public string CTV { get; set; } = null!;
 
-        public VoltageTransformer(string cTv, uint number, string transformerType, DateTime verificationDate)
-            : base(number, transformerType, verificationDate)
+
+        public VoltageTransformer(uint number, DateTime verificationDate, string transformerType, string cTV) 
+            : base(number, verificationDate, transformerType)
         {
-            CTV = cTv;
+            CTV = cTV;
         }
-
-
     }
 }

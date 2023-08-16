@@ -7,18 +7,20 @@ using System.Threading.Tasks;
 
 namespace Energy.DAL.Entities
 {
-    public class SupplyPoint : Entity
+
+    /// <summary>
+    /// Точка поставки электроэнергии
+    /// </summary>
+    public class SupplyPoint : NamedEntity
     {
-        public string Name { get; set; }
 
         public string MaxPower { get; set; }
 
         public DateTime EndDate { get; set; }
 
-        public SupplyPoint(string name, string maxPower, DateTime endDate)
-            : base()
+        public SupplyPoint(string name, string maxPower, DateTime endDate) 
+            : base(name)
         {
-            Name = name;
             MaxPower = maxPower;
             EndDate = endDate;
         }
