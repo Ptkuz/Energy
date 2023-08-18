@@ -15,6 +15,12 @@ namespace Energy.DAL.Entities.Base
 
         public string Name { get; set; } = null!;
 
+        public NamedEntity() 
+            : base()
+        {
+            
+        }
+
         public NamedEntity(string name)
             : base()
         {

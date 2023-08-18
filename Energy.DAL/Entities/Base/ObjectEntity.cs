@@ -14,8 +14,13 @@ namespace Energy.DAL.Entities.Base
     public class ObjectEntity : NamedEntity
     {
 
-        [Column("Address", Order = 2)]
         public string Address { get; set; } = null!;
+
+        public ObjectEntity() 
+            : base()
+        {
+            
+        }
 
         public ObjectEntity(string name, string address) 
             : base(name)

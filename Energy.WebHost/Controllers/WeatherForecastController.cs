@@ -1,3 +1,5 @@
+using Energy.DAL.Context;
+using Energy.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Energy.WebHost.Controllers
@@ -6,28 +8,26 @@ namespace Energy.WebHost.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly EnergyContext _energyContext;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, EnergyContext energyContext)
         {
             _logger = logger;
+            _energyContext = energyContext;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public IActionResult Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            using (_energyContext) 
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                Organization organization = new Organization("Тестовая организация", "Москва");
+                _energyContext.Add<Organization>(organization);
+            }
+            return Ok();
         }
     }
 }

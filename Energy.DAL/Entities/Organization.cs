@@ -11,9 +11,18 @@ namespace Energy.DAL.Entities
     /// <summary>
     /// Организация
     /// </summary>
-    public class MainOrganization : Organization
+    public class Organization : ObjectEntity
     {
-        public MainOrganization(string name, string address) 
+
+        public List<Subsidiary> Subsidiaries { get; set; } = new();
+
+        public Organization() 
+            : base()
+        {
+            
+        }
+
+        public Organization(string name, string address) 
             : base(name, address)
         {
 

@@ -14,6 +14,12 @@ namespace Energy.DAL.Entities.Base
         public uint Number { get; set; }
         public DateTime VerificationDate { get; set; }
 
+        public BaseEnergyEntity() 
+            : base()
+        {
+            
+        }
+
         public BaseEnergyEntity(uint number, DateTime verificationDate) 
             : base()
         {

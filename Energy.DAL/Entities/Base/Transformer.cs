@@ -15,6 +15,12 @@ namespace Energy.DAL.Entities.Base
 
         public string TransformerType { get; set; }
 
+        public Transformer() 
+            : base()
+        {
+            
+        }
+
         public Transformer(uint number, DateTime verificationDate, string transformerType) 
             : base(number, verificationDate)
         {
