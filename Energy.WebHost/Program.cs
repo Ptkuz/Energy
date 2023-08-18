@@ -1,4 +1,5 @@
 using Energy.DAL.Context;
+using Energy.DAL.Context.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

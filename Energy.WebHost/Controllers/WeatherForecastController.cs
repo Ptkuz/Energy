@@ -20,7 +20,7 @@ namespace Energy.WebHost.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IActionResult Get()
+        public IActionResult AddNewMeasuringPoint()
         {
             using (_energyContext) 
             {

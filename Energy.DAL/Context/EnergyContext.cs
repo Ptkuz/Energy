@@ -1,4 +1,5 @@
-﻿using Energy.DAL.Entities;
+﻿using Energy.DAL.Context.Interfaces;
+using Energy.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace Energy.DAL.Context
 {
     public class EnergyContext : DbContext
     {
+
         public DbSet<ConsumptionObject> ConsumptionObjects { get; set; } = null!;
         public DbSet<CounterEnergy> CounterEnergies { get; set; } = null!;  
         public DbSet<CurrentTransformer> CurrentTransformers { get; set; } = null!;
@@ -29,6 +31,7 @@ namespace Energy.DAL.Context
         public EnergyContext(DbContextOptions<EnergyContext> dbContext)
             : base(dbContext)
         {
+            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
 
@@ -77,30 +80,6 @@ namespace Energy.DAL.Context
                 .WithOne(m => m.MeasuringPoint)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            //modelBuilder
-            //    .Entity<MeasuringPoint>()
-            //    .HasMany(s => s.SupplyPoints)
-            //    .WithMany(m => m.MeasuringPoints)
-            //    .UsingEntity<SettlementMeter>(
-            //        sm => sm
-            //        .HasOne(mp => mp.SupplyPoint)
-            //        .WithMany(sm => sm.SettlementMeters)
-            //        .HasForeignKey(fs => fs.SupplyPointId)
-            //        .OnDelete(DeleteBehavior.Cascade),
-            //        sm => sm
-            //        .HasOne(mp => mp.MeasuringPoint)
-            //        .WithMany(sm => sm.SettlementMeters)
-            //        .HasForeignKey(fm => fm.MeasuringPointId)
-            //        .OnDelete(DeleteBehavior.Cascade),
-            //        sm => 
-            //        {
-            //            sm.Property(sd => sd.StartDate).HasDefaultValue(DateTime.Now);
-            //            sm.Property(ed => ed.EndDate).HasDefaultValue(DateTime.Now);
-            //            sm.HasKey(t => new { t.SupplyPointId, t.MeasuringPointId });
-            //            sm.ToTable("SettlementMeter");
-            //        }
-            //    );
-
 
             modelBuilder
                 .Entity<MeasuringPoint>()
@@ -115,6 +94,9 @@ namespace Energy.DAL.Context
                         sm.Property(ed => ed.EndDate).HasDefaultValue(DateTime.Now);
                     }
                 );
+
+            IContextInitializer contextInitializer = new ContextInitializer();
+            modelBuilder.Entity<Organization>().HasData(contextInitializer.FillOrganizations());
         }
     }
 }
