@@ -1,7 +1,8 @@
 using Energy.DAL.Context;
-using Microsoft.EntityFrameworkCore;
-using Energy.Services.Services.Interfaces;
 using Energy.Services;
+using Energy.Services.Services;
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,13 @@ if (String.IsNullOrEmpty(connectionString))
     throw new ArgumentNullException(nameof(connectionString), "Connection string can not be null!");
 }
 
+builder.Services.AddDbContext<EnergyContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
 builder.Services.AddDataBaseServices(connectionString);
+builder.Services.AddControllers()
+    .AddJsonOptions(options => 
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

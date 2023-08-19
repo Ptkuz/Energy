@@ -88,7 +88,10 @@ namespace Energy.DAL.Context
                     {
                 new CounterEnergy(645465, RandomDate(), "Тип первый"),
                 new CounterEnergy(596565, RandomDate(), "Тип второй"),
-                new CounterEnergy(795645, RandomDate(), "Тип первый")
+                new CounterEnergy(795645, RandomDate(), "Тип первый"),
+                new CounterEnergy(865656, DateTime.Now.AddDays(4), "Тип первый"),
+                new CounterEnergy(695854, DateTime.Now.AddDays(2), "Тип первый"),
+                new CounterEnergy(695845, DateTime.Now.AddDays(3), "Тип второй")
                     };
                 return counterEnergies;
             }
@@ -106,7 +109,11 @@ namespace Energy.DAL.Context
                 {
                 new CurrentTransformer(534534, RandomDate(), "Первый тип трансформатора", 1.5),
                 new CurrentTransformer(434344, RandomDate(), "Первый тип трансформатора", 1.8),
-                new CurrentTransformer(323232, RandomDate(), "Второй тип трансформатора", 1.3)
+                new CurrentTransformer(323232, RandomDate(), "Второй тип трансформатора", 1.3),
+                new CurrentTransformer(645654, RandomDate(), "Второй тип трансформатора", 1.7),
+                new CurrentTransformer(323232, DateTime.Now.AddDays(2), "Второй тип трансформатора", 1.3),
+                new CurrentTransformer(123234, DateTime.Now.AddDays(3), "Второй тип трансформатора", 1.7),
+                new CurrentTransformer(968845, DateTime.Now.AddDays(4), "Второй тип трансформатора", 1.2)
                 };
                 return currentTransformers;
             }
@@ -123,7 +130,10 @@ namespace Energy.DAL.Context
                      {
                 new VoltageTransformer(6575656, RandomDate(), "Второй тип трансформатора", 1.3),
                 new VoltageTransformer(4212332, RandomDate(), "Первый тип трансформатора", 1.2),
-                new VoltageTransformer(1212133, RandomDate(), "Второй тип трансформатора", 1.4)
+                new VoltageTransformer(1212133, RandomDate(), "Второй тип трансформатора", 1.4),
+                new VoltageTransformer(6544654, DateTime.Now.AddDays(3), "Второй тип трансформатора", 1.1),
+                new VoltageTransformer(6968543, DateTime.Now.AddDays(2), "Второй тип трансформатора", 1.9),
+                new VoltageTransformer(2139234, DateTime.Now.AddDays(3), "Второй тип трансформатора", 1.7)
                      };
                 return voltageTransformers;
             }
@@ -139,7 +149,10 @@ namespace Energy.DAL.Context
                     {
                 new MeasuringPoint("Расчетная точка 1", ConsumptionObjects[0].Id, CounterEnergies[0].Id, CurrentTransformers[0].Id, VoltageTransformers[0].Id),
                 new MeasuringPoint("Расчетная точка 2", ConsumptionObjects[1].Id, CounterEnergies[1].Id, CurrentTransformers[1].Id, VoltageTransformers[1].Id),
-                new MeasuringPoint("Расчетная точка 3", ConsumptionObjects[2].Id, CounterEnergies[2].Id, CurrentTransformers[2].Id, VoltageTransformers[2].Id)
+                new MeasuringPoint("Расчетная точка 3", ConsumptionObjects[2].Id, CounterEnergies[2].Id, CurrentTransformers[2].Id, VoltageTransformers[2].Id),
+                new MeasuringPoint("Расчетная точка 4", ConsumptionObjects[3].Id, CounterEnergies[3].Id, CurrentTransformers[3].Id, VoltageTransformers[3].Id),
+                new MeasuringPoint("Расчетная точка 5", ConsumptionObjects[4].Id, CounterEnergies[4].Id, CurrentTransformers[4].Id, VoltageTransformers[4].Id),
+                new MeasuringPoint("Расчетная точка 6", ConsumptionObjects[5].Id, CounterEnergies[5].Id, CurrentTransformers[5].Id, VoltageTransformers[5].Id)
                     };
                 return measuringPoints;
             }

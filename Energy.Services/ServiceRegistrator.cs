@@ -11,6 +11,7 @@ namespace Energy.Services
         public static IServiceCollection AddDataBaseServices(this IServiceCollection services, string connectionString) => services
             .AddDbContext<EnergyContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped)
             .AddTransient<IDataBaseService, DataBaseService>()
+            
             ;
     }
 }
