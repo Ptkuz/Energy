@@ -15,17 +15,20 @@ namespace Energy.DAL.Entities
     public class MeasuringPoint : NamedEntity
     {
 
-        [ForeignKey("ConsumptionObjectId")]
-        public ConsumptionObject ConsumptionObject { get; set; } = null!;
+        public ConsumptionObject? ConsumptionObject { get; set; }
 
-        [ForeignKey("CounterEnergyId")]
-        public CounterEnergy CounterEnergy { get; set; } = null!;
+        public Guid ConsumptionObjectId { get; set; }
 
-        [ForeignKey("CurrentTransformerId")]
-        public CurrentTransformer CurrentTransformer { get; set; } = null!;
+        public CounterEnergy CounterEnergy { get; set; }
 
-        [ForeignKey("VoltageTransformerId")]
-        public VoltageTransformer VoltageTransformer { get; set; } = null!;
+        public Guid CounterEnergyId { get; set; }
+
+        public CurrentTransformer CurrentTransformer { get; set; }
+
+        public Guid CurrentTransformerId { get; set; }
+
+        public VoltageTransformer VoltageTransformer { get; set; }
+        public Guid VoltageTransformerId { get; set; }
 
         public List<SupplyPoint> SupplyPoints { get; set; } = new();
 
@@ -35,9 +38,14 @@ namespace Energy.DAL.Entities
 
         }
 
-        public MeasuringPoint(string name, DateTime startDate) 
-            : base(name)
+        public MeasuringPoint(Guid id, string name, Guid consumptionObjectId,
+            Guid counterEnergyId, Guid currentTransformerId, Guid voltageTransformerId) 
+            : base(id, name)
         {
+            ConsumptionObjectId = consumptionObjectId;
+            CounterEnergyId = counterEnergyId;
+            CurrentTransformerId = currentTransformerId;
+            VoltageTransformerId = voltageTransformerId;
         }
     }
 }

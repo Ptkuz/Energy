@@ -16,8 +16,7 @@ namespace Energy.DAL.Entities
     {
         public string CounterType { get; set; } = null!;
 
-        [ForeignKey("MeasuringPointId")]
-        public MeasuringPoint MeasuringPoint { get; set; } = null!;
+        public MeasuringPoint? MeasuringPoint { get; set; }
 
         public CounterEnergy()
            : base()

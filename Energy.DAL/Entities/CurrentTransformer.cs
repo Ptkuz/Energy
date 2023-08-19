@@ -14,10 +14,9 @@ namespace Energy.DAL.Entities
     public class CurrentTransformer : Transformer
     {
 
-        public string CTC { get; set; } = null!;
+        public double CTC { get; set; }
 
-        [ForeignKey("MeasuringPointId")]
-        public MeasuringPoint MeasuringPoint { get; set; } = null!;
+        public MeasuringPoint? MeasuringPoint { get; set; }
 
         public CurrentTransformer()
            : base()
@@ -25,7 +24,7 @@ namespace Energy.DAL.Entities
 
         }
 
-        public CurrentTransformer(uint number, DateTime verificationDate, string transformerType, string cTC)
+        public CurrentTransformer(uint number, DateTime verificationDate, string transformerType, double cTC)
             : base(number, verificationDate, transformerType)
         {
             CTC = cTC;

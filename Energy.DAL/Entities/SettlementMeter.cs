@@ -25,5 +25,15 @@ namespace Energy.DAL.Entities
         {
             
         }
+
+        public SettlementMeter(Guid supplyPointId, Guid measuringPointId,
+            DateTime startDate, DateTime endDate)
+            : base() 
+        {
+            SupplyPointId = supplyPointId;
+            MeasuringPointId = measuringPointId;
+            StartDate = startDate;
+            EndDate = endDate;
+        }
     }
 }

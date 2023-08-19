@@ -1,5 +1,4 @@
 using Energy.DAL.Context;
-using Energy.DAL.Context.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 string? connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-if (String.IsNullOrEmpty(connectionString)) 
+if (String.IsNullOrEmpty(connectionString))
 {
     throw new ArgumentNullException(nameof(connectionString), "Connection string can not be null!");
 }

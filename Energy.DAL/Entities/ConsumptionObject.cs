@@ -15,8 +15,9 @@ namespace Energy.DAL.Entities
     public class ConsumptionObject : ObjectEntity
     {
 
-        [ForeignKey("SubsidiaryId")]
-        public Subsidiary Subsidiary { get; set; } = null!;
+        public Subsidiary? Subsidiary { get; set; }
+        public Guid SubsidiaryId { get; set; }
+
 
         public List<SupplyPoint> SupplyPoints { get; set; } = new();
 
@@ -28,10 +29,10 @@ namespace Energy.DAL.Entities
             
         }
 
-        public ConsumptionObject(string name, string address)
-            : base(name, address)
+        public ConsumptionObject(Guid id, string name, string address, Guid subsidiaryId)
+            : base(id, name, address)
         {
-
+            SubsidiaryId = subsidiaryId;
         }
     }
 }

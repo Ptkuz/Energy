@@ -1,4 +1,4 @@
-﻿using Energy.DAL.Context.Interfaces;
+﻿
 using Energy.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -95,8 +95,16 @@ namespace Energy.DAL.Context
                     }
                 );
 
-            IContextInitializer contextInitializer = new ContextInitializer();
-            modelBuilder.Entity<Organization>().HasData(contextInitializer.FillOrganizations());
+            ContextInitializer contextInitializer = new ContextInitializer();
+            modelBuilder.Entity<Organization>().HasData(contextInitializer.Organizations);
+            modelBuilder.Entity<Subsidiary>().HasData(contextInitializer.Subsidiaries);
+            modelBuilder.Entity<ConsumptionObject>().HasData(contextInitializer.ConsumptionObjects);
+            modelBuilder.Entity<CounterEnergy>().HasData(contextInitializer.CounterEnergies);
+            modelBuilder.Entity<CurrentTransformer>().HasData(contextInitializer.CurrentTransformers);
+            modelBuilder.Entity<VoltageTransformer>().HasData(contextInitializer.VoltageTransformers);
+            modelBuilder.Entity<MeasuringPoint>().HasData(contextInitializer.MeasuringPoints);
+            modelBuilder.Entity<SupplyPoint>().HasData(contextInitializer.SupplyPoints);
+            modelBuilder.Entity<SettlementMeter>().HasData(contextInitializer.SettlementMeters);
         }
     }
 }

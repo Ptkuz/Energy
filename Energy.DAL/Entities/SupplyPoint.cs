@@ -15,10 +15,11 @@ namespace Energy.DAL.Entities
     public class SupplyPoint : NamedEntity
     {
 
-        public string MaxPower { get; set; }
+        public int MaxPower { get; set; }
 
-        [ForeignKey("ConsumptionObjectId")]
-        public ConsumptionObject ConsumptionObject { get; set; }
+        public ConsumptionObject? ConsumptionObject { get; set; }
+
+        public Guid ConsumptionObjectId { get; set; }   
 
 
         public List<MeasuringPoint> MeasuringPoints { get; set; } = new();
@@ -29,10 +30,11 @@ namespace Energy.DAL.Entities
 
         }
 
-        public SupplyPoint(string name, string maxPower, DateTime endDate) 
-            : base(name)
+        public SupplyPoint(Guid id, string name, int maxPower, Guid consumptionObjectId) 
+            : base(id, name)
         {
             MaxPower = maxPower;
+            ConsumptionObjectId = consumptionObjectId;
         }
     }
 }

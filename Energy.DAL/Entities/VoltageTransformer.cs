@@ -15,10 +15,11 @@ namespace Energy.DAL.Entities
     public class VoltageTransformer : Transformer
     {
 
-        public string CTV { get; set; } = null!;
+        public double CTV { get; set; }
 
-        [ForeignKey("MeasuringPointId")]
         public MeasuringPoint MeasuringPoint { get; set; }
+
+
 
         public VoltageTransformer()
            : base()
@@ -26,7 +27,7 @@ namespace Energy.DAL.Entities
 
         }
 
-        public VoltageTransformer(uint number, DateTime verificationDate, string transformerType, string cTV) 
+        public VoltageTransformer(uint number, DateTime verificationDate, string transformerType, double cTV) 
             : base(number, verificationDate, transformerType)
         {
             CTV = cTV;

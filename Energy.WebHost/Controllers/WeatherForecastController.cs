@@ -22,11 +22,11 @@ namespace Energy.WebHost.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IActionResult AddNewMeasuringPoint()
         {
-            using (_energyContext) 
-            {
-                Organization organization = new Organization("Тестовая организация", "Москва");
-                _energyContext.Add<Organization>(organization);
-            }
+            //using (_energyContext) 
+            //{
+            //    Organization organization = new Organization("Тестовая организация", "Москва");
+            //    _energyContext.Add<Organization>(organization);
+            //}
             return Ok();
         }
     }

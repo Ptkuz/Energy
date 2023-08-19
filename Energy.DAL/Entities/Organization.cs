@@ -22,8 +22,8 @@ namespace Energy.DAL.Entities
             
         }
 
-        public Organization(string name, string address) 
-            : base(name, address)
+        public Organization(Guid id, string name, string address) 
+            : base(id, name, address)
         {
 
         }
