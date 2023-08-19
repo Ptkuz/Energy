@@ -38,9 +38,9 @@ namespace Energy.DAL.Entities
 
         }
 
-        public MeasuringPoint(Guid id, string name, Guid consumptionObjectId,
+        public MeasuringPoint(string name, Guid consumptionObjectId,
             Guid counterEnergyId, Guid currentTransformerId, Guid voltageTransformerId) 
-            : base(id, name)
+            : base(name)
         {
             ConsumptionObjectId = consumptionObjectId;
             CounterEnergyId = counterEnergyId;

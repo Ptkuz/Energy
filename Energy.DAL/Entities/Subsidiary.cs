@@ -27,8 +27,8 @@ namespace Energy.DAL.Entities
 
         }
 
-        public Subsidiary(Guid id, string name, string address, Guid organizationId) :
-            base(id, name, address)
+        public Subsidiary(string name, string address, Guid organizationId) :
+            base(name, address)
         {
             OrganizationId = organizationId;
         }

@@ -1,18 +1,16 @@
 ﻿using Energy.DAL.Context;
-using Energy.DAL.Context.Interfaces;
+using Energy.Services.Services;
+using Energy.Services.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Energy.Services
 {
     public static class ServiceRegistrator
     {
-        public static IServiceCollection AddEnergyServices(this IServiceCollection services) => services
-            .AddTransient<IContextInitializer, ContextInitializer>()
+        public static IServiceCollection AddDataBaseServices(this IServiceCollection services, string connectionString) => services
+            .AddDbContext<EnergyContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped)
+            .AddTransient<IDataBaseService, DataBaseService>()
             ;
     }
 }

@@ -9,5 +9,6 @@ namespace Energy.Services.Services.Interfaces
 {
     public interface IDataBaseService
     {
+        Task AddNewPoint();
     }
 }

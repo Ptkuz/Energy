@@ -14,11 +14,11 @@ namespace Energy.DAL.Context
                 if (organizations == null)
                     organizations = new Organization[]
                     {
-                new Organization(Guid.NewGuid(), "Организация 1", "Москва"),
-                new Organization(Guid.NewGuid(), "Организация 2", "Новосибирск"),
-                new Organization(Guid.NewGuid(), "Организация 3", "Москва"),
-                new Organization(Guid.NewGuid(), "Организация 4", "Екатеринбург"),
-                new Organization(Guid.NewGuid(), "Организация 5", "Москва")
+                new Organization("Организация 1", "Москва"),
+                new Organization("Организация 2", "Новосибирск"),
+                new Organization("Организация 3", "Москва"),
+                new Organization("Организация 4", "Екатеринбург"),
+                new Organization("Организация 5", "Москва")
                     };
 
                 return organizations;
@@ -34,14 +34,14 @@ namespace Energy.DAL.Context
                 if (subsidiaries == null)
                     subsidiaries = new Subsidiary[]
                     {
-                new Subsidiary(Guid.NewGuid(), "Дочерняя организация 1", "Москва", Organizations[0].Id),
-                new Subsidiary(Guid.NewGuid(), "Дочерняя организация 2", "Москва", Organizations[0].Id),
-                new Subsidiary(Guid.NewGuid(), "Дочерняя организация 3", "Новосибирск", Organizations[1].Id),
-                new Subsidiary(Guid.NewGuid(), "Дочерняя организация 4", "Москва", Organizations[2].Id),
-                new Subsidiary(Guid.NewGuid(), "Дочерняя организация 5", "Москва", Organizations[2].Id),
-                new Subsidiary(Guid.NewGuid(), "Дочерняя организация 6", "Екатеринбург", Organizations[3].Id),
-                new Subsidiary(Guid.NewGuid(), "Дочерняя организцая 7", "Москва", Organizations[4].Id),
-                new Subsidiary(Guid.NewGuid(), "Дочерняя организация 8", "Москва", Organizations[4].Id),
+                new Subsidiary("Дочерняя организация 1", "Москва", Organizations[0].Id),
+                new Subsidiary("Дочерняя организация 2", "Москва", Organizations[0].Id),
+                new Subsidiary("Дочерняя организация 3", "Новосибирск", Organizations[1].Id),
+                new Subsidiary("Дочерняя организация 4", "Москва", Organizations[2].Id),
+                new Subsidiary("Дочерняя организация 5", "Москва", Organizations[2].Id),
+                new Subsidiary("Дочерняя организация 6", "Екатеринбург", Organizations[3].Id),
+                new Subsidiary("Дочерняя организцая 7", "Москва", Organizations[4].Id),
+                new Subsidiary("Дочерняя организация 8", "Москва", Organizations[4].Id),
 
                     };
 
@@ -58,19 +58,19 @@ namespace Energy.DAL.Context
                 if (consumptionObjects == null)
                     consumptionObjects = new ConsumptionObject[]
                     {
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 1", "Москва", Subsidiaries[0].Id),
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 4", "Новосибирск", Subsidiaries[1].Id),
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 5", "Новосибирск", Subsidiaries[1].Id),
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 6", "Новосибирск", Subsidiaries[1].Id),
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 7", "Москва", Subsidiaries[2].Id),
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 8", "Москва", Subsidiaries[2].Id),
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 9", "Москва", Subsidiaries[2].Id),
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 10", "Екатеринбург", Subsidiaries[3].Id),
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 11", "Екатеринбург", Subsidiaries[3].Id),
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 12", "Екатеринбург", Subsidiaries[3].Id  ),
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 13", "Москва", Subsidiaries[4].Id),
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 14", "Москва", Subsidiaries[4].Id),
-                new ConsumptionObject(Guid.NewGuid(), "Объект потребления 15", "Москва", Subsidiaries[4].Id),
+                new ConsumptionObject("Объект потребления 1", "Москва", Subsidiaries[0].Id),
+                new ConsumptionObject("Объект потребления 4", "Новосибирск", Subsidiaries[1].Id),
+                new ConsumptionObject("Объект потребления 5", "Новосибирск", Subsidiaries[1].Id),
+                new ConsumptionObject("Объект потребления 6", "Новосибирск", Subsidiaries[1].Id),
+                new ConsumptionObject("Объект потребления 7", "Москва", Subsidiaries[2].Id),
+                new ConsumptionObject("Объект потребления 8", "Москва", Subsidiaries[2].Id),
+                new ConsumptionObject("Объект потребления 9", "Москва", Subsidiaries[2].Id),
+                new ConsumptionObject("Объект потребления 10", "Екатеринбург", Subsidiaries[3].Id),
+                new ConsumptionObject("Объект потребления 11", "Екатеринбург", Subsidiaries[3].Id),
+                new ConsumptionObject("Объект потребления 12", "Екатеринбург", Subsidiaries[3].Id  ),
+                new ConsumptionObject("Объект потребления 13", "Москва", Subsidiaries[4].Id),
+                new ConsumptionObject("Объект потребления 14", "Москва", Subsidiaries[4].Id),
+                new ConsumptionObject("Объект потребления 15", "Москва", Subsidiaries[4].Id),
                     };
 
                 return consumptionObjects;
@@ -137,9 +137,9 @@ namespace Energy.DAL.Context
                 if (measuringPoints == null)
                     measuringPoints = new MeasuringPoint[]
                     {
-                new MeasuringPoint(Guid.NewGuid(), "Расчетная точка 1", ConsumptionObjects[0].Id, CounterEnergies[0].Id, CurrentTransformers[0].Id, VoltageTransformers[0].Id),
-                new MeasuringPoint(Guid.NewGuid(), "Расчетная точка 2", ConsumptionObjects[1].Id, CounterEnergies[1].Id, CurrentTransformers[1].Id, VoltageTransformers[1].Id),
-                new MeasuringPoint(Guid.NewGuid(), "Расчетная точка 3", ConsumptionObjects[2].Id, CounterEnergies[2].Id, CurrentTransformers[2].Id, VoltageTransformers[2].Id)
+                new MeasuringPoint("Расчетная точка 1", ConsumptionObjects[0].Id, CounterEnergies[0].Id, CurrentTransformers[0].Id, VoltageTransformers[0].Id),
+                new MeasuringPoint("Расчетная точка 2", ConsumptionObjects[1].Id, CounterEnergies[1].Id, CurrentTransformers[1].Id, VoltageTransformers[1].Id),
+                new MeasuringPoint("Расчетная точка 3", ConsumptionObjects[2].Id, CounterEnergies[2].Id, CurrentTransformers[2].Id, VoltageTransformers[2].Id)
                     };
                 return measuringPoints;
             }
@@ -154,9 +154,9 @@ namespace Energy.DAL.Context
                 if (supplyPoints == null)
                     supplyPoints = new SupplyPoint[]
                     {
-                new SupplyPoint(Guid.NewGuid(), "Принимающая точка 1", 500, ConsumptionObjects[0].Id),
-                new SupplyPoint(Guid.NewGuid(), "Принимающая точка 2", 300, ConsumptionObjects[1].Id),
-                new SupplyPoint(Guid.NewGuid(), "Принимающая точка 3", 700, ConsumptionObjects[2].Id)
+                new SupplyPoint("Принимающая точка 1", 500, ConsumptionObjects[0].Id),
+                new SupplyPoint("Принимающая точка 2", 300, ConsumptionObjects[1].Id),
+                new SupplyPoint("Принимающая точка 3", 700, ConsumptionObjects[2].Id)
                     };
                 return supplyPoints;
             }

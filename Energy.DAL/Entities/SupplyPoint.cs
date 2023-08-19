@@ -30,8 +30,8 @@ namespace Energy.DAL.Entities
 
         }
 
-        public SupplyPoint(Guid id, string name, int maxPower, Guid consumptionObjectId) 
-            : base(id, name)
+        public SupplyPoint(string name, int maxPower, Guid consumptionObjectId) 
+            : base(name)
         {
             MaxPower = maxPower;
             ConsumptionObjectId = consumptionObjectId;

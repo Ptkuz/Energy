@@ -22,8 +22,8 @@ namespace Energy.DAL.Entities.Base
             
         }
 
-        public ObjectEntity(Guid id, string name, string address) 
-            : base(id, name)
+        public ObjectEntity(string name, string address) 
+            : base(name)
         {
             Address = address;
         }

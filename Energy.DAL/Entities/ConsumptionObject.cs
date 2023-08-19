@@ -29,8 +29,8 @@ namespace Energy.DAL.Entities
             
         }
 
-        public ConsumptionObject(Guid id, string name, string address, Guid subsidiaryId)
-            : base(id, name, address)
+        public ConsumptionObject(string name, string address, Guid subsidiaryId)
+            : base(name, address)
         {
             SubsidiaryId = subsidiaryId;
         }

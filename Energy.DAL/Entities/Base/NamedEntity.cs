@@ -21,8 +21,8 @@ namespace Energy.DAL.Entities.Base
             
         }
 
-        public NamedEntity(Guid id, string name)
-            : base(id)
+        public NamedEntity(string name)
+            : base()
         {
             Name = name;
         }
