@@ -126,7 +126,7 @@ namespace Energy.DAL.Context
             }
         }
 
-        private static VoltageTransformer[] voltageTransformers = null;
+        private static VoltageTransformer[]? voltageTransformers = null;
 
         public static VoltageTransformer[] VoltageTransformers
         {

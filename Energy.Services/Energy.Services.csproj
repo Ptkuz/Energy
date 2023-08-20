@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Energy.DAL\Energy.DAL.csproj" />
+    <ProjectReference Include="..\Energy.Validations\Energy.Validations.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace Energy.WebHost.RequestModels
+﻿namespace Energy.WebHost.Models.RequestModels
 {
     /// <summary>
     /// Модель запроса для добавления новой точки измерения
