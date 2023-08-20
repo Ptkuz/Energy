@@ -15,17 +15,21 @@ namespace Energy.Validations
     public static class ValidationsExtentions
     {
 
+        private const string emptyObject = "Объект не может быть пустым!";
+        private const string emptyCollection = "Коллекция не может быть пустой!";
+        private const string emptyString = "Строка не может быть пустой!";
+
         /// <summary>
         /// Проверяет объект на null
         /// </summary>
         /// <param name="source">Провермяемый объект</param>
         /// <param name="argumentName">Имя аргумента</param>
         /// <exception cref="ArgumentNullException">Передается пустой объект</exception>
-        public static void CheckArgumentNull([NotNull]this object? source, string argumentName) 
+        public static void CheckArgumentNull([NotNull]this object? source, string argumentName, string message = emptyObject) 
         {
             if (source is null) 
             {
-                throw new ArgumentNullException(argumentName ?? String.Empty, "Объект не может быть пустым!");    
+                throw new ArgumentNullException(argumentName ?? String.Empty, message);    
             }
         }
 
@@ -36,11 +40,11 @@ namespace Energy.Validations
         /// <param name="source">Проверяемая коллекция</param>
         /// <param name="argumentName">Имя аргумента</param>
         /// <exception cref="ArgumentNullOrEmptyException">Передается пустая коллекция</exception>
-        public static void CheckEnumerableNullOrEmpty<T>([NotNull]this IEnumerable<T>? source, string argumentName)
+        public static void CheckEnumerableNullOrEmpty<T>([NotNull]this IEnumerable<T>? source, string argumentName = emptyCollection)
         {
             if (source is null || !source.Any()) 
             {
-                throw new ArgumentNullOrEmptyException(argumentName ?? string.Empty, "Коллекция не может быть пустой!");
+                throw new ArgumentNullOrEmptyException(argumentName ?? string.Empty, argumentName);
             }
         }
 
@@ -50,11 +54,11 @@ namespace Energy.Validations
         /// <param name="source">Проверяемая строка</param>
         /// <param name="argumentName">Имя аргумента</param>
         /// <exception cref="ArgumentNullOrEmptyException">Передается пустая строка</exception>
-        public static void CheckArgumentNullOrWhiteSpace([NotNull]this string? source, string argumentName) 
+        public static void CheckArgumentNullOrWhiteSpace([NotNull]this string? source, string argumentName = emptyString) 
         {
             if (String.IsNullOrWhiteSpace(source)) 
             {
-                throw new ArgumentNullOrEmptyException(argumentName ?? string.Empty, "Строка не может быть пустой!");
+                throw new ArgumentNullOrEmptyException(argumentName ?? string.Empty, argumentName);
             }
         }
     }
