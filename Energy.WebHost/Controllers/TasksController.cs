@@ -98,7 +98,7 @@ namespace Energy.WebHost.Controllers
         /// </summary>
         /// <param name="consumptionObjectName">Название объекта потребления <see cref="ConsumptionObject"/></param>
         /// <returns><see cref="CollectionResponse{T}"/></returns>
-        [HttpGet("GetCounterEnergies{consumptionObjectName}")]
+        [HttpGet("GetCounterEnergies/{consumptionObjectName}")]
         public async Task<IActionResult> GetCounterEnergies(string consumptionObjectName)
         {
             try
@@ -125,7 +125,7 @@ namespace Energy.WebHost.Controllers
         /// </summary>
         /// <param name="consumptionObjectName">Название объекта потребления <see cref="ConsumptionObject"/></param>
         /// <returns><see cref="CollectionResponse{T}"/></returns>
-        [HttpGet("GetCurrentTransformers{consumptionObjectName}")]
+        [HttpGet("GetCurrentTransformers/{consumptionObjectName}")]
         public async Task<IActionResult> GetCurrentTransformers(string consumptionObjectName)
         {
             try
@@ -153,7 +153,7 @@ namespace Energy.WebHost.Controllers
         /// </summary>
         /// <param name="consumptionObjectName">Название объекта потребления <see cref="ConsumptionObject"/></param>
         /// <returns><see cref="CollectionResponse{T}"/></returns>
-        [HttpGet("GetVoltageTransformers{consumptionObjectName}")]
+        [HttpGet("GetVoltageTransformers/{consumptionObjectName}")]
         public async Task<IActionResult> GetVoltageTransformers(string consumptionObjectName)
         {
             try
