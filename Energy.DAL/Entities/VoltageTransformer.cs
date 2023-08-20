@@ -1,4 +1,5 @@
 ﻿using Energy.DAL.Entities.Base;
+using Entity = Energy.DAL.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,19 +16,35 @@ namespace Energy.DAL.Entities
     public class VoltageTransformer : Transformer
     {
 
+        /// <summary>
+        /// КТН (Коэффициент трансформации)
+        /// </summary>
+        [Column("CTV", Order = 4)]
         public double CTV { get; set; }
 
-        public MeasuringPoint MeasuringPoint { get; set; }
+        /// <summary>
+        /// Внешний ключ <see cref="Entity.MeasuringPoint"/>
+        /// </summary>
+        public MeasuringPoint? MeasuringPoint { get; set; }
 
 
-
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public VoltageTransformer()
            : base()
         {
 
         }
 
-        public VoltageTransformer(uint number, DateTime verificationDate, string transformerType, double cTV) 
+        /// <summary>
+        /// Конструктор инициализатор
+        /// </summary>
+        /// <param name="number">Номер</param>
+        /// <param name="verificationDate">Дата поверки</param>
+        /// <param name="transformerType">Тип трансформатора</param>
+        /// <param name="cTV">КТН (Коэффициент трансформации)</param>
+        public VoltageTransformer(string number, string transformerType, DateTime verificationDate, double cTV) 
             : base(number, verificationDate, transformerType)
         {
             CTV = cTV;

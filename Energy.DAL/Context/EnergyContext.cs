@@ -9,25 +9,70 @@ using System.Threading.Tasks;
 
 namespace Energy.DAL.Context
 {
+    /// <summary>
+    /// Контекст базы данных
+    /// </summary>
     public class EnergyContext : DbContext
     {
 
+        /// <summary>
+        /// Объекты потребления DbSet<see cref="ConsumptionObject"/>>
+        /// </summary>
         public DbSet<ConsumptionObject> ConsumptionObjects { get; set; } = null!;
-        public DbSet<CounterEnergy> CounterEnergies { get; set; } = null!;  
+
+        /// <summary>
+        /// Счетчики электрической энергии DbSet<see cref="CounterEnergy"/>>
+        /// </summary>
+        public DbSet<CounterEnergy> CounterEnergies { get; set; } = null!;
+
+        /// <summary>
+        /// Трансформаторы тока DbSet<see cref="CurrentTransformer"/>>
+        /// </summary>
         public DbSet<CurrentTransformer> CurrentTransformers { get; set; } = null!;
+
+        /// <summary>
+        /// Точки измерения электроэнергии DbSet<see cref="MeasuringPoint"/>>
+        /// </summary>
         public DbSet<MeasuringPoint> MeasuringPoints { get; set; } = null!;
+
+        /// <summary>
+        /// Организации DbSet<see cref="Organization"/>>
+        /// </summary>
         public DbSet<Organization> Organizations { get; set; } = null!;
+
+        /// <summary>
+        /// Расчетные приборы учета DbSet<see cref="SettlementMeter"/>>
+        /// </summary>
         public DbSet<SettlementMeter> SettlementMeters { get; set; } = null!;
+
+        /// <summary>
+        /// Дочернии организации DbSet<see cref="Subsidiary"/>>
+        /// </summary>
         public DbSet<Subsidiary> Subsidiaries { get; set; } = null!;
+
+        /// <summary>
+        /// Точки поставки электроэнергии DbSet<see cref="SupplyPoint"/>>
+        /// </summary>
         public DbSet<SupplyPoint> SupplyPoints { get; set; } = null!;
+
+        /// <summary>
+        /// Трансформаторы напряжения DbSet<see cref="VoltageTransformer"/>>
+        /// </summary>
         public DbSet<VoltageTransformer> VoltageTransformers { get; set; } = null!;
 
 
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public EnergyContext() 
         {
             
         }
 
+        /// <summary>
+        /// Конструктор инициализатор
+        /// </summary>
+        /// <param name="dbContext"></param>
         public EnergyContext(DbContextOptions<EnergyContext> dbContext)
             : base(dbContext)
         {
@@ -35,6 +80,10 @@ namespace Energy.DAL.Context
             Database.EnsureCreated();
         }
 
+        /// <summary>
+        /// Конфигурирует связи и модели
+        /// </summary>
+        /// <param name="modelBuilder">API для настройки</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
@@ -80,7 +129,7 @@ namespace Energy.DAL.Context
                 .WithOne(m => m.MeasuringPoint)
                 .OnDelete(DeleteBehavior.Cascade);
 
-
+            // Многие ко многим между MeasuringPoint и SupplyPoint через SettlementMeter
             modelBuilder
                 .Entity<MeasuringPoint>()
                 .HasMany(s => s.SupplyPoints)
@@ -90,21 +139,22 @@ namespace Energy.DAL.Context
                     sm => sm.HasOne<MeasuringPoint>().WithMany().HasForeignKey(k => k.MeasuringPointId).OnDelete(DeleteBehavior.NoAction),
                     sm =>
                     {
-                        sm.Property(sd => sd.StartDate).HasDefaultValue(DateTime.Now);
-                        sm.Property(ed => ed.EndDate).HasDefaultValue(DateTime.Now);
+                        sm.Property(sd => sd.StartDate).HasDefaultValue(default);
+                        sm.Property(ed => ed.EndDate).HasDefaultValue(default);
                     }
                 );
 
-            ContextInitializer contextInitializer = new ContextInitializer();
-            modelBuilder.Entity<Organization>().HasData(contextInitializer.Organizations);
-            modelBuilder.Entity<Subsidiary>().HasData(contextInitializer.Subsidiaries);
-            modelBuilder.Entity<ConsumptionObject>().HasData(contextInitializer.ConsumptionObjects);
-            modelBuilder.Entity<CounterEnergy>().HasData(contextInitializer.CounterEnergies);
-            modelBuilder.Entity<CurrentTransformer>().HasData(contextInitializer.CurrentTransformers);
-            modelBuilder.Entity<VoltageTransformer>().HasData(contextInitializer.VoltageTransformers);
-            modelBuilder.Entity<MeasuringPoint>().HasData(contextInitializer.MeasuringPoints);
-            modelBuilder.Entity<SupplyPoint>().HasData(contextInitializer.SupplyPoints);
-            modelBuilder.Entity<SettlementMeter>().HasData(contextInitializer.SettlementMeters);
+
+            // Инициализация базы начальными значениями
+            modelBuilder.Entity<Organization>().HasData(ContextInitializer.Organizations);
+            modelBuilder.Entity<Subsidiary>().HasData(ContextInitializer.Subsidiaries);
+            modelBuilder.Entity<ConsumptionObject>().HasData(ContextInitializer.ConsumptionObjects);
+            modelBuilder.Entity<CounterEnergy>().HasData(ContextInitializer.CounterEnergies);
+            modelBuilder.Entity<CurrentTransformer>().HasData(ContextInitializer.CurrentTransformers);
+            modelBuilder.Entity<VoltageTransformer>().HasData(ContextInitializer.VoltageTransformers);
+            modelBuilder.Entity<MeasuringPoint>().HasData(ContextInitializer.MeasuringPoints);
+            modelBuilder.Entity<SupplyPoint>().HasData(ContextInitializer.SupplyPoints);
+            modelBuilder.Entity<SettlementMeter>().HasData(ContextInitializer.SettlementMeters);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,15 +14,28 @@ namespace Energy.DAL.Entities.Base
     public class Transformer : BaseEnergyEntity
     {
 
-        public string TransformerType { get; set; }
+        /// <summary>
+        /// Тип трансформатора
+        /// </summary>
+        [Column("TransformerType", Order = 3)]
+        public string TransformerType { get; set; } = null!;
 
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public Transformer() 
             : base()
         {
             
         }
 
-        public Transformer(uint number, DateTime verificationDate, string transformerType) 
+        /// <summary>
+        /// Конструктор инициализатор
+        /// </summary>
+        /// <param name="number">Номер</param>
+        /// <param name="verificationDate">Дата поверки</param>
+        /// <param name="transformerType">Тип трансформатора</param>
+        public Transformer(string number, DateTime verificationDate, string transformerType) 
             : base(number, verificationDate)
         {
             TransformerType = transformerType;

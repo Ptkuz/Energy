@@ -18,9 +18,9 @@ namespace Energy.Services.Services
 
         public async Task<MeasuringPoint> AddNewPoint()
         {
-            CounterEnergy counterEnergy = new CounterEnergy(432432, new DateTime(2018,05,23,00,00,00), "Первый тип счетчика");
-            CurrentTransformer currentTransformer  = new CurrentTransformer(534534, new DateTime(2018,07,09,00,00,00), "Первый тип трансформатора", 1.5);
-            VoltageTransformer voltageTransformer = new VoltageTransformer(54545, new DateTime(2019,08,09,00,00,00), "Второй тип трансформатора", 1.6);
+            CounterEnergy counterEnergy = new CounterEnergy("45654654645654", "Первый тип счетчика", new DateTime(2018,05,23,00,00,00));
+            CurrentTransformer currentTransformer  = new CurrentTransformer("45654654654654", "Первый тип трансформатора", new DateTime(2018,07,09,00,00,00), 1.5);
+            VoltageTransformer voltageTransformer = new VoltageTransformer("546546546546", "Второй тип трансформатора", new DateTime(2019, 08, 09, 00, 00, 00), 1.6);
 
             ConsumptionObject? consumptionObject = await _energyContext.ConsumptionObjects.FirstOrDefaultAsync();
 

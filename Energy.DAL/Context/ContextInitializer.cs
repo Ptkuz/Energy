@@ -2,12 +2,12 @@
 
 namespace Energy.DAL.Context
 {
-    public class ContextInitializer
+    public static class ContextInitializer
     {
 
-        private Organization[]? organizations = null;
+        private static Organization[]? organizations = null;
 
-        public Organization[] Organizations
+        public static Organization[] Organizations
         {
             get
             {
@@ -25,9 +25,9 @@ namespace Energy.DAL.Context
             }
         }
 
-        private Subsidiary[]? subsidiaries = null;
+        private static Subsidiary[]? subsidiaries = null;
 
-        public Subsidiary[] Subsidiaries
+        public static Subsidiary[] Subsidiaries
         {
             get
             {
@@ -49,9 +49,9 @@ namespace Energy.DAL.Context
             }
         }
 
-        private ConsumptionObject[]? consumptionObjects = null;
+        private static ConsumptionObject[]? consumptionObjects = null;
 
-        public ConsumptionObject[] ConsumptionObjects
+        public static ConsumptionObject[] ConsumptionObjects
         {
             get
             {
@@ -77,29 +77,29 @@ namespace Energy.DAL.Context
             }
         }
 
-        private CounterEnergy[] counterEnergies = null;
+        private static CounterEnergy[] counterEnergies = null;
 
-        public CounterEnergy[] CounterEnergies
+        public static CounterEnergy[] CounterEnergies
         {
             get
             {
                 if (counterEnergies == null)
                     counterEnergies = new CounterEnergy[]
                     {
-                new CounterEnergy(645465, RandomDate(), "Тип первый"),
-                new CounterEnergy(596565, RandomDate(), "Тип второй"),
-                new CounterEnergy(795645, RandomDate(), "Тип первый"),
-                new CounterEnergy(865656, DateTime.Now.AddDays(4), "Тип первый"),
-                new CounterEnergy(695854, DateTime.Now.AddDays(2), "Тип первый"),
-                new CounterEnergy(695845, DateTime.Now.AddDays(3), "Тип второй")
+                new CounterEnergy("45654645654654", "Тип первый", RandomDate()),
+                new CounterEnergy("56765764546454", "Тип второй", RandomDate()),
+                new CounterEnergy("54654654745674", "Тип первый", RandomDate()),
+                new CounterEnergy("45654654654645", "Тип первый", DateTime.Now.AddDays(4)),
+                new CounterEnergy("56788769987987", "Тип первый", DateTime.Now.AddDays(2)),
+                new CounterEnergy("56767565745645", "Тип второй", DateTime.Now.AddDays(3))
                     };
                 return counterEnergies;
             }
         }
 
-        private CurrentTransformer[]? currentTransformers = null;
+        private static CurrentTransformer[]? currentTransformers = null;
 
-        public CurrentTransformer[] CurrentTransformers
+        public static CurrentTransformer[] CurrentTransformers
         {
 
             get
@@ -107,40 +107,40 @@ namespace Energy.DAL.Context
                 if (currentTransformers == null)
                 currentTransformers = new CurrentTransformer[]
                 {
-                new CurrentTransformer(534534, RandomDate(), "Первый тип трансформатора", 1.5),
-                new CurrentTransformer(434344, RandomDate(), "Первый тип трансформатора", 1.8),
-                new CurrentTransformer(323232, RandomDate(), "Второй тип трансформатора", 1.3),
-                new CurrentTransformer(645654, RandomDate(), "Второй тип трансформатора", 1.7),
-                new CurrentTransformer(323232, DateTime.Now.AddDays(2), "Второй тип трансформатора", 1.3),
-                new CurrentTransformer(123234, DateTime.Now.AddDays(3), "Второй тип трансформатора", 1.7),
-                new CurrentTransformer(968845, DateTime.Now.AddDays(4), "Второй тип трансформатора", 1.2)
+                new CurrentTransformer("6754654654645", "Первый тип трансформатора", RandomDate(), 1.5),
+                new CurrentTransformer("45676576575675", "Первый тип трансформатора", RandomDate(), 1.8),
+                new CurrentTransformer("43543543543576", "Второй тип трансформатора", RandomDate(), 1.3),
+                new CurrentTransformer("67867587686754", "Второй тип трансформатора", RandomDate(), 1.7),
+                new CurrentTransformer("86787687687676", "Второй тип трансформатора", DateTime.Now.AddDays(2), 1.3),
+                new CurrentTransformer("65765867876867", "Второй тип трансформатора", DateTime.Now.AddDays(3), 1.7),
+                new CurrentTransformer("56867896876546", "Второй тип трансформатора", DateTime.Now.AddDays(4), 1.2)
                 };
                 return currentTransformers;
             }
         }
 
-        private VoltageTransformer[] voltageTransformers = null;
+        private static VoltageTransformer[] voltageTransformers = null;
 
-        public VoltageTransformer[] VoltageTransformers
+        public static VoltageTransformer[] VoltageTransformers
         {
             get
             {
                 if (voltageTransformers == null)
                     voltageTransformers = new VoltageTransformer[]
                      {
-                new VoltageTransformer(6575656, RandomDate(), "Второй тип трансформатора", 1.3),
-                new VoltageTransformer(4212332, RandomDate(), "Первый тип трансформатора", 1.2),
-                new VoltageTransformer(1212133, RandomDate(), "Второй тип трансформатора", 1.4),
-                new VoltageTransformer(6544654, DateTime.Now.AddDays(3), "Второй тип трансформатора", 1.1),
-                new VoltageTransformer(6968543, DateTime.Now.AddDays(2), "Второй тип трансформатора", 1.9),
-                new VoltageTransformer(2139234, DateTime.Now.AddDays(3), "Второй тип трансформатора", 1.7)
+                new VoltageTransformer("45645645645654", "Второй тип трансформатора", RandomDate(), 1.3),
+                new VoltageTransformer("45654654654646", "Первый тип трансформатора", RandomDate(), 1.2),
+                new VoltageTransformer("97687686796786", "Второй тип трансформатора", RandomDate(), 1.4),
+                new VoltageTransformer("56765765765765", "Второй тип трансформатора", DateTime.Now.AddDays(3), 1.1),
+                new VoltageTransformer("67867867867875", "Второй тип трансформатора", DateTime.Now.AddDays(2), 1.9),
+                new VoltageTransformer("56786758767878", "Второй тип трансформатора", DateTime.Now.AddDays(3), 1.7)
                      };
                 return voltageTransformers;
             }
         }
 
-        private MeasuringPoint[]? measuringPoints = null;
-        public MeasuringPoint[] MeasuringPoints
+        private static MeasuringPoint[]? measuringPoints = null;
+        public static MeasuringPoint[] MeasuringPoints
         {
             get
             {
@@ -158,9 +158,9 @@ namespace Energy.DAL.Context
             }
         }
 
-        private SupplyPoint[]? supplyPoints = null;
+        private static SupplyPoint[]? supplyPoints = null;
 
-        public SupplyPoint[] SupplyPoints
+        public static SupplyPoint[] SupplyPoints
         {
             get
             {
@@ -175,29 +175,29 @@ namespace Energy.DAL.Context
             }
         }
 
-        private SettlementMeter[]? settlementMeters = null;
+        private static SettlementMeter[]? settlementMeters = null;
 
-        public SettlementMeter[] SettlementMeters
+        public static SettlementMeter[] SettlementMeters
         {
             get
             {
                 if (settlementMeters == null)
                     settlementMeters = new SettlementMeter[]
                      {
-                new SettlementMeter(SupplyPoints[0].Id, MeasuringPoints[0].Id, new DateTime(2018, 11, 25, 00, 00 ,00), new DateTime(2018, 11, 25, 00, 00 ,00)),
-                new SettlementMeter(SupplyPoints[0].Id, MeasuringPoints[1].Id, new DateTime(2018, 11, 29, 00, 00 ,00), new DateTime(2018, 11, 30, 00, 00 ,00)),
-                new SettlementMeter(SupplyPoints[0].Id, MeasuringPoints[2].Id, new DateTime(2018, 11, 11, 00, 00 ,00), new DateTime(2018, 11, 13, 00, 00 ,00)),
-                new SettlementMeter(SupplyPoints[0].Id, MeasuringPoints[0].Id, new DateTime(2018, 11, 5, 00, 00 ,00), new DateTime(2018, 11, 6, 00, 00 ,00)),
-                new SettlementMeter(SupplyPoints[1].Id, MeasuringPoints[0].Id, new DateTime(2018, 11, 20, 00, 00 ,00), new DateTime(2018, 11, 22, 00, 00 ,00)),
-                new SettlementMeter(SupplyPoints[2].Id, MeasuringPoints[0].Id, new DateTime(2018, 11, 21, 00, 00 ,00), new DateTime(2018, 11, 21, 00, 00 ,00)),
+                new SettlementMeter(new DateTime(2018, 11, 25, 00, 00 ,00), new DateTime(2018, 11, 25, 00, 00 ,00), SupplyPoints[0].Id, MeasuringPoints[0].Id),
+                new SettlementMeter(new DateTime(2018, 11, 29, 00, 00 ,00), new DateTime(2018, 11, 30, 00, 00 ,00), SupplyPoints[0].Id, MeasuringPoints[1].Id),
+                new SettlementMeter(new DateTime(2018, 11, 11, 00, 00, 00), new DateTime(2018, 11, 13, 00, 00, 00), SupplyPoints[0].Id, MeasuringPoints[2].Id),
+                new SettlementMeter(new DateTime(2018, 11, 5, 00, 00, 00), new DateTime(2018, 11, 6, 00, 00, 00), SupplyPoints[0].Id, MeasuringPoints[0].Id),
+                new SettlementMeter(new DateTime(2018, 11, 20, 00, 00, 00), new DateTime(2018, 11, 22, 00, 00, 00), SupplyPoints[1].Id, MeasuringPoints[0].Id),
+                new SettlementMeter(new DateTime(2018, 11, 21, 00, 00, 00), new DateTime(2018, 11, 21, 00, 00, 00), SupplyPoints[2].Id, MeasuringPoints[0].Id),
 
                      };
                 return settlementMeters;
             }
         }
 
-        private Random random = new Random();
-        private DateTime RandomDate(DateTime startDate = default)
+        private static Random random = new Random();
+        private static DateTime RandomDate(DateTime startDate = default)
         {
             if (startDate == default)
                 startDate = new DateTime(2010, 1, 1, 00, 00, 00);
