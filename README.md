@@ -8,11 +8,13 @@
 Использовался подход Code First и Entity Framework Core 7 для создания структуры базы данных. 
 Все сущности вынесены в отдельный проект, Energy.DAL.
 
-![image](https://github.com/Ptkuz/Energy/assets/43362172/ea2443c7-4902-49cf-8fc6-ef370fd8ec30)
+![image](https://github.com/Ptkuz/Energy/assets/43362172/efc92c7d-e406-4fc2-ae35-c44f91f3204f)
+
 
 В результате получилась ER-диаграмма:
 
-![image](https://github.com/Ptkuz/Energy/assets/43362172/fb818826-9c10-4cf4-8fd4-8165345e7e5d)
+![image](https://github.com/Ptkuz/Energy/assets/43362172/9dc9aef6-93ec-47a2-a925-4e0fa61c8b1b)
+
 
 Создан специальный класс, ContextInitializer. В нем инициализируются начальные данные. Затем эти данных вставляются в БД во время конфигурирования.
 
@@ -45,7 +47,8 @@
 
 Для теста использовался Swagger: 
 
-![image](https://github.com/Ptkuz/Energy/assets/43362172/2bf0e6dd-fcea-4b6c-8e95-a36b02bb7bc1)
+![image](https://github.com/Ptkuz/Energy/assets/43362172/93785e35-4129-4c9a-b6d6-f2426f9f56bb)
+
 
 
 
