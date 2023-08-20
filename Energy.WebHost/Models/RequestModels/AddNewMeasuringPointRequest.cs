@@ -6,6 +6,11 @@
     public class AddNewMeasuringPointRequest
     {
         /// <summary>
+        /// Название точки измерения электроэнергии
+        /// </summary>
+        public string Name { get; set; } = null!;
+
+        /// <summary>
         /// Номер счетчика энергии
         /// </summary>
         public string CounterEnergyNumber { get; set; } = null!;

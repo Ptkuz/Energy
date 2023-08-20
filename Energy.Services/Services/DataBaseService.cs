@@ -47,7 +47,7 @@ namespace Energy.Services.Services
                 voltageTransformer.CheckArgumentNull(nameof(voltageTransformer), $"Трансформатор напряжения по номеру \"{addNewPointDto.VoltageTransformerNumber}\" не найден!");
                 consumptionObject.CheckArgumentNull(nameof(consumptionObject), $"Не найден ни один объект потребления!");
 
-                MeasuringPoint measuringPoint = new MeasuringPoint("Новая точка изменения", consumptionObject.Id, counterEnergy.Id, currentTransformer.Id, voltageTransformer.Id);
+                MeasuringPoint measuringPoint = new MeasuringPoint(addNewPointDto.Name, consumptionObject.Id, counterEnergy.Id, currentTransformer.Id, voltageTransformer.Id);
 
                 _energyContext.Add(measuringPoint);
                 await _energyContext.SaveChangesAsync();

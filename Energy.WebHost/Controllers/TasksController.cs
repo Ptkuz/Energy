@@ -43,6 +43,10 @@ namespace Energy.WebHost.Controllers
         /// трансформатора тока и трансформатора напряжения.
         /// Поиск счетчика и трансформатора будет проходить по номерам, 
         /// который содержится в модели <see cref="AddNewMeasuringPointRequest"/>
+        /// Для теста необходимо указать номера. Сущности по этим номерам уже добавлены в базу данных:
+        /// Счетчик электрической энергии: 1111
+        /// Трансформатор тока: 2222
+        /// Трансформатор напряжения: 3333
         /// </summary>
         /// <param name="addNewMeasuringPointRequest">Модель, содержащая номера счетчика и трансформаторов</param>
         /// <returns><see cref="AddNewMeasuringPointResponse"/></returns>
@@ -55,14 +59,20 @@ namespace Energy.WebHost.Controllers
                 MeasuringPoint measuringPoint = await _dataBaseService.AddNewPoint(addNewPointDto);
                 return Ok(new AddNewMeasuringPointResponse(measuringPoint));
             }
-            catch (Exception ex)
+            catch (ArgumentNullException ex)
             {
                 return BadRequest(new AddNewMeasuringPointResponse(new ErrorInfo(ex.Message, ex.StackTrace)));
+            }
+            catch (Exception ex) 
+            {
+                return StatusCode(500, new AddNewMeasuringPointResponse(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
         }
 
         /// <summary>
         /// Выбрать все расчетные приборы учета в 2018 году
+        /// Выведутся все расчетные приборы, у которых дата старта или дата завершения
+        /// находятся в пределах 2018 года
         /// </summary>
         /// <returns><see cref="CollectionResponse{T}"/></returns>
         [HttpGet("GetSettlementMeters")]
@@ -74,15 +84,17 @@ namespace Energy.WebHost.Controllers
                     await _dataBaseService.GetSettlementMeters();
                 return Ok(new CollectionResponse<SettlementMeter>(settlementMeters));
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
-                return BadRequest(new CollectionResponse<SettlementMeter>(new ErrorInfo(ex.Message, ex.StackTrace)));
+                return StatusCode(500, new CollectionResponse<SettlementMeter>(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
         }
 
         /// <summary>
         /// По указанному объекту потребления выбрать все счетчики с закончившимся 
         /// сроком поверке
+        /// Необходимо указать названия Объекта потребления. Для теста нужно указать:
+        /// Тестовый объект потребления 6
         /// </summary>
         /// <param name="consumptionObjectName">Название объекта потребления <see cref="ConsumptionObject"/></param>
         /// <returns><see cref="CollectionResponse{T}"/></returns>
@@ -95,15 +107,21 @@ namespace Energy.WebHost.Controllers
                     await _dataBaseService.GetCounterEnergies(consumptionObjectName);
                 return Ok(new CollectionResponse<CounterEnergy>(counterEnergies));
             }
-            catch (Exception ex)
+            catch (ArgumentException ex)
             {
                 return BadRequest(new CollectionResponse<CounterEnergy>(new ErrorInfo(ex.Message, ex.StackTrace)));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new CollectionResponse<CounterEnergy>(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
         }
 
         /// <summary>
         /// По указанному объекту потребления выбрать все трансформаторы 
         /// напряжения с закончившимся сроком поверке
+        /// Необходимо указать названия Объекта потребления. Для теста нужно указать:
+        /// Тестовый объект потребления 7
         /// </summary>
         /// <param name="consumptionObjectName">Название объекта потребления <see cref="ConsumptionObject"/></param>
         /// <returns><see cref="CollectionResponse{T}"/></returns>
@@ -116,9 +134,13 @@ namespace Energy.WebHost.Controllers
                     await _dataBaseService.GetCurrentTransformers(consumptionObjectName);
                 return Ok(new CollectionResponse<CurrentTransformer>(currentTransformers));
             }
-            catch (Exception ex)
+            catch (ArgumentException ex)
             {
                 return BadRequest(new CollectionResponse<CurrentTransformer>(new ErrorInfo(ex.Message, ex.StackTrace)));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new CollectionResponse<CurrentTransformer>(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
         }
 
@@ -126,6 +148,8 @@ namespace Energy.WebHost.Controllers
         /// <summary>
         /// По указанному объекту потребления выбрать все трансформаторы тока
         /// с закончившимся сроком поверке
+        /// Необходимо указать названия Объекта потребления. Для теста нужно указать:
+        /// Тестовый объект потребления 6
         /// </summary>
         /// <param name="consumptionObjectName">Название объекта потребления <see cref="ConsumptionObject"/></param>
         /// <returns><see cref="CollectionResponse{T}"/></returns>
@@ -138,10 +162,15 @@ namespace Energy.WebHost.Controllers
                     await _dataBaseService.GetVoltageTransformers(consumptionObjectName);
                 return Ok(new CollectionResponse<VoltageTransformer>(voltageTransformers));
             }
-            catch (Exception ex)
+            catch (ArgumentException ex)
             {
                 return BadRequest(new CollectionResponse<VoltageTransformer>(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new CollectionResponse<VoltageTransformer>(new ErrorInfo(ex.Message, ex.StackTrace)));
+            }
+
         }
 
     }
