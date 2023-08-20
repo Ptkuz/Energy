@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Energy.DAL.Entities.Base
 {
@@ -23,10 +18,10 @@ namespace Energy.DAL.Entities.Base
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public Transformer() 
+        public Transformer()
             : base()
         {
-            
+
         }
 
         /// <summary>
@@ -35,7 +30,7 @@ namespace Energy.DAL.Entities.Base
         /// <param name="number">Номер</param>
         /// <param name="verificationDate">Дата поверки</param>
         /// <param name="transformerType">Тип трансформатора</param>
-        public Transformer(string number, DateTime verificationDate, string transformerType) 
+        public Transformer(string number, DateTime verificationDate, string transformerType)
             : base(number, verificationDate)
         {
             TransformerType = transformerType;

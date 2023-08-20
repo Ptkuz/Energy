@@ -1,10 +1,5 @@
 ﻿using Energy.Validations.Exceptions;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Energy.Validations
 {
@@ -25,11 +20,11 @@ namespace Energy.Validations
         /// <param name="source">Провермяемый объект</param>
         /// <param name="argumentName">Имя аргумента</param>
         /// <exception cref="ArgumentNullException">Передается пустой объект</exception>
-        public static void CheckArgumentNull([NotNull]this object? source, string argumentName, string message = emptyObject) 
+        public static void CheckArgumentNull([NotNull] this object? source, string argumentName, string message = emptyObject)
         {
-            if (source is null) 
+            if (source is null)
             {
-                throw new ArgumentNullException(argumentName ?? String.Empty, message);    
+                throw new ArgumentNullException(argumentName ?? String.Empty, message);
             }
         }
 
@@ -40,9 +35,9 @@ namespace Energy.Validations
         /// <param name="source">Проверяемая коллекция</param>
         /// <param name="argumentName">Имя аргумента</param>
         /// <exception cref="ArgumentNullOrEmptyException">Передается пустая коллекция</exception>
-        public static void CheckEnumerableNullOrEmpty<T>([NotNull]this IEnumerable<T>? source, string argumentName = emptyCollection)
+        public static void CheckEnumerableNullOrEmpty<T>([NotNull] this IEnumerable<T>? source, string argumentName = emptyCollection)
         {
-            if (source is null || !source.Any()) 
+            if (source is null || !source.Any())
             {
                 throw new ArgumentNullOrEmptyException(argumentName ?? string.Empty, argumentName);
             }
@@ -54,9 +49,9 @@ namespace Energy.Validations
         /// <param name="source">Проверяемая строка</param>
         /// <param name="argumentName">Имя аргумента</param>
         /// <exception cref="ArgumentNullOrEmptyException">Передается пустая строка</exception>
-        public static void CheckArgumentNullOrWhiteSpace([NotNull]this string? source, string argumentName = emptyString) 
+        public static void CheckArgumentNullOrWhiteSpace([NotNull] this string? source, string argumentName = emptyString)
         {
-            if (String.IsNullOrWhiteSpace(source)) 
+            if (String.IsNullOrWhiteSpace(source))
             {
                 throw new ArgumentNullOrEmptyException(argumentName ?? string.Empty, argumentName);
             }

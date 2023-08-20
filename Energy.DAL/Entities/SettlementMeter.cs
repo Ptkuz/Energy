@@ -1,10 +1,5 @@
 ﻿using Energy.DAL.Entities.Base;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Energy.DAL.Entities
 {
@@ -39,10 +34,10 @@ namespace Energy.DAL.Entities
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public SettlementMeter() 
+        public SettlementMeter()
             : base()
         {
-            
+
         }
 
         /// <summary>
@@ -54,7 +49,7 @@ namespace Energy.DAL.Entities
         /// <param name="measuringPointId">Внешний ключ <see cref="MeasuringPoint"/></param>
         public SettlementMeter(DateTime startDate, DateTime endDate,
             Guid supplyPointId, Guid measuringPointId)
-            : base() 
+            : base()
         {
             SupplyPointId = supplyPointId;
             MeasuringPointId = measuringPointId;

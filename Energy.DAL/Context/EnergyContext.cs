@@ -1,11 +1,5 @@
-﻿
-using Energy.DAL.Entities;
+﻿using Energy.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Energy.DAL.Context
 {
@@ -64,9 +58,9 @@ namespace Energy.DAL.Context
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public EnergyContext() 
+        public EnergyContext()
         {
-            
+
         }
 
         /// <summary>

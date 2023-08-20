@@ -2,16 +2,24 @@
 
 namespace Energy.DAL.Context
 {
+    /// <summary>
+    /// Инициализатор базы данных
+    /// </summary>
     public static class ContextInitializer
     {
 
         private static Organization[]? organizations = null;
 
+        private static Random random = new Random();
+
+        /// <summary>
+        /// Инициализатор организаций
+        /// </summary>
         public static Organization[] Organizations
         {
             get
             {
-                if (organizations == null)
+                if (organizations is null)
                     organizations = new Organization[]
                     {
                 new Organization("Организация 1", "Москва"),
@@ -27,11 +35,14 @@ namespace Energy.DAL.Context
 
         private static Subsidiary[]? subsidiaries = null;
 
+        /// <summary>
+        /// Инициализатор дочерних организаций
+        /// </summary>
         public static Subsidiary[] Subsidiaries
         {
             get
             {
-                if (subsidiaries == null)
+                if (subsidiaries is null)
                     subsidiaries = new Subsidiary[]
                     {
                 new Subsidiary("Дочерняя организация 1", "Москва", Organizations[0].Id),
@@ -51,11 +62,14 @@ namespace Energy.DAL.Context
 
         private static ConsumptionObject[]? consumptionObjects = null;
 
+        /// <summary>
+        /// Инициализатор объектов потребления
+        /// </summary>
         public static ConsumptionObject[] ConsumptionObjects
         {
             get
             {
-                if (consumptionObjects == null)
+                if (consumptionObjects is null)
                     consumptionObjects = new ConsumptionObject[]
                     {
                 new ConsumptionObject("Объект потребления 1", "Москва", Subsidiaries[0].Id),
@@ -79,11 +93,14 @@ namespace Energy.DAL.Context
 
         private static CounterEnergy[]? counterEnergies = null;
 
+        /// <summary>
+        /// Инициализатор счетчиков электрической энергии
+        /// </summary>
         public static CounterEnergy[] CounterEnergies
         {
             get
             {
-                if (counterEnergies == null)
+                if (counterEnergies is null)
                     counterEnergies = new CounterEnergy[]
                     {
                 new CounterEnergy("45654645654654", "Тип первый", RandomDate()),
@@ -103,12 +120,15 @@ namespace Energy.DAL.Context
 
         private static CurrentTransformer[]? currentTransformers = null;
 
+        /// <summary>
+        /// Инициализатор трансформаторов тока
+        /// </summary>
         public static CurrentTransformer[] CurrentTransformers
         {
 
             get
             {
-                if (currentTransformers == null)
+                if (currentTransformers is null)
                 currentTransformers = new CurrentTransformer[]
                 {
                 new CurrentTransformer("6754654654645", "Первый тип трансформатора", RandomDate(), 1.5),
@@ -128,11 +148,14 @@ namespace Energy.DAL.Context
 
         private static VoltageTransformer[]? voltageTransformers = null;
 
+        /// <summary>
+        /// Инициализатор трансформаторов напряжения
+        /// </summary>
         public static VoltageTransformer[] VoltageTransformers
         {
             get
             {
-                if (voltageTransformers == null)
+                if (voltageTransformers is null)
                     voltageTransformers = new VoltageTransformer[]
                      {
                 new VoltageTransformer("45645645645654", "Второй тип трансформатора", RandomDate(), 1.3),
@@ -151,11 +174,15 @@ namespace Energy.DAL.Context
         }
 
         private static MeasuringPoint[]? measuringPoints = null;
+
+        /// <summary>
+        /// Инициализатор точек измерения электроэнергиии
+        /// </summary>
         public static MeasuringPoint[] MeasuringPoints
         {
             get
             {
-                if (measuringPoints == null)
+                if (measuringPoints is null)
                     measuringPoints = new MeasuringPoint[]
                     {
                 new MeasuringPoint("Расчетная точка 1", ConsumptionObjects[0].Id, CounterEnergies[0].Id, CurrentTransformers[0].Id, VoltageTransformers[0].Id),
@@ -174,11 +201,14 @@ namespace Energy.DAL.Context
 
         private static SupplyPoint[]? supplyPoints = null;
 
+        /// <summary>
+        /// Инициализатор точек поставки электроэнергии
+        /// </summary>
         public static SupplyPoint[] SupplyPoints
         {
             get
             {
-                if (supplyPoints == null)
+                if (supplyPoints is null)
                     supplyPoints = new SupplyPoint[]
                     {
                 new SupplyPoint("Принимающая точка 1", 500, ConsumptionObjects[0].Id),
@@ -191,11 +221,14 @@ namespace Energy.DAL.Context
 
         private static SettlementMeter[]? settlementMeters = null;
 
+        /// <summary>
+        /// Инициализатор расчетных точек учета
+        /// </summary>
         public static SettlementMeter[] SettlementMeters
         {
             get
             {
-                if (settlementMeters == null)
+                if (settlementMeters is null)
                     settlementMeters = new SettlementMeter[]
                      {
                 new SettlementMeter(new DateTime(2018, 11, 25, 00, 00 ,00), new DateTime(2018, 11, 25, 00, 00 ,00), SupplyPoints[0].Id, MeasuringPoints[0].Id),
@@ -210,12 +243,11 @@ namespace Energy.DAL.Context
             }
         }
 
-        private static Random random = new Random();
         private static DateTime RandomDate(DateTime startDate = default)
         {
             if (startDate == default)
-                startDate = new DateTime(2010, 1, 1, 00, 00, 00);
-            int range = (DateTime.Now - startDate).Minutes;
+                startDate = new DateTime(2019, 1, 1, 00, 00, 00);
+            int range = (DateTime.Now - startDate).Days;
             return startDate.AddMinutes(random.Next(range));
         }
 

@@ -1,10 +1,4 @@
 ﻿using Energy.DAL.Entities.Base;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Energy.DAL.Entities
 {
@@ -78,7 +72,7 @@ namespace Energy.DAL.Entities
         /// <param name="currentTransformerId">Внешний ключ <see cref="CurrentTransformerId"/></param>
         /// <param name="voltageTransformerId">Внешний ключ <see cref="VoltageTransformerId"/></param>
         public MeasuringPoint(string name, Guid consumptionObjectId,
-            Guid counterEnergyId, Guid currentTransformerId, Guid voltageTransformerId) 
+            Guid counterEnergyId, Guid currentTransformerId, Guid voltageTransformerId)
             : base(name)
         {
             ConsumptionObjectId = consumptionObjectId;

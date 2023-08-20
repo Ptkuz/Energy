@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Energy.DAL.Entities.Base
 {
@@ -23,10 +18,10 @@ namespace Energy.DAL.Entities.Base
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public ObjectEntity() 
+        public ObjectEntity()
             : base()
         {
-            
+
         }
 
         /// <summary>
@@ -34,7 +29,7 @@ namespace Energy.DAL.Entities.Base
         /// </summary>
         /// <param name="name">Наименование</param>
         /// <param name="address">Адрес</param>
-        public ObjectEntity(string name, string address) 
+        public ObjectEntity(string name, string address)
             : base(name)
         {
             Address = address;

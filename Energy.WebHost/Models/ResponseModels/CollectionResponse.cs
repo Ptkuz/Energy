@@ -1,5 +1,4 @@
-﻿using Energy.DAL.Entities;
-using Energy.DAL.Entities.Base;
+﻿using Energy.DAL.Entities.Base;
 using Energy.WebHost.Models.ResponseModels.Base;
 
 namespace Energy.WebHost.Models.ResponseModels
@@ -9,7 +8,7 @@ namespace Energy.WebHost.Models.ResponseModels
     /// Ответ с коллекцией <see cref="T"/>
     /// </summary>
     /// <typeparam name="T">Объект, унаследованный от <see cref="Entity"/></typeparam>
-    public class CollectionResponse<T> : BaseResponse 
+    public class CollectionResponse<T> : BaseResponse
         where T : Entity, new()
     {
 

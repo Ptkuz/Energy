@@ -1,9 +1,4 @@
 ﻿using Energy.DAL.Entities.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Energy.DAL.Entities
 {
@@ -22,10 +17,10 @@ namespace Energy.DAL.Entities
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public Organization() 
+        public Organization()
             : base()
         {
-            
+
         }
 
         /// <summary>
@@ -33,7 +28,7 @@ namespace Energy.DAL.Entities
         /// </summary>
         /// <param name="name">Название</param>
         /// <param name="address">Адрес</param>
-        public Organization(string name, string address) 
+        public Organization(string name, string address)
             : base(name, address)
         {
 

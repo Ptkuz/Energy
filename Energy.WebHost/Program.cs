@@ -1,6 +1,5 @@
 using Energy.DAL.Context;
 using Energy.Services;
-using Energy.Services.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
@@ -23,7 +22,7 @@ if (String.IsNullOrEmpty(connectionString))
 builder.Services.AddDbContext<EnergyContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
 builder.Services.AddDataBaseServices(connectionString);
 builder.Services.AddControllers()
-    .AddJsonOptions(options => 
+    .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
     });

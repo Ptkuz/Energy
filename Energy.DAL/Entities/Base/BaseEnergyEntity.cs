@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Energy.DAL.Entities.Base
 {
@@ -27,10 +22,10 @@ namespace Energy.DAL.Entities.Base
         /// <summary>
         /// Конструктор инициализатор
         /// </summary>
-        public BaseEnergyEntity() 
+        public BaseEnergyEntity()
             : base()
         {
-            
+
         }
 
         /// <summary>
@@ -38,7 +33,7 @@ namespace Energy.DAL.Entities.Base
         /// </summary>
         /// <param name="number">Номер</param>
         /// <param name="verificationDate">Дата поверки</param>
-        public BaseEnergyEntity(string number, DateTime verificationDate) 
+        public BaseEnergyEntity(string number, DateTime verificationDate)
             : base()
         {
             Number = number;

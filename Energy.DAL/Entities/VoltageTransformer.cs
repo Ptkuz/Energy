@@ -1,11 +1,6 @@
 ﻿using Energy.DAL.Entities.Base;
-using Entity = Energy.DAL.Entities;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Entity = Energy.DAL.Entities;
 
 namespace Energy.DAL.Entities
 {
@@ -44,7 +39,7 @@ namespace Energy.DAL.Entities
         /// <param name="verificationDate">Дата поверки</param>
         /// <param name="transformerType">Тип трансформатора</param>
         /// <param name="cTV">КТН (Коэффициент трансформации)</param>
-        public VoltageTransformer(string number, string transformerType, DateTime verificationDate, double cTV) 
+        public VoltageTransformer(string number, string transformerType, DateTime verificationDate, double cTV)
             : base(number, verificationDate, transformerType)
         {
             CTV = cTV;
