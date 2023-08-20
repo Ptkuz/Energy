@@ -77,7 +77,7 @@ namespace Energy.DAL.Context
             }
         }
 
-        private static CounterEnergy[] counterEnergies = null;
+        private static CounterEnergy[]? counterEnergies = null;
 
         public static CounterEnergy[] CounterEnergies
         {

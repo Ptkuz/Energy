@@ -16,7 +16,7 @@ namespace Energy.DAL.Entities.Base
         /// Номер
         /// </summary>
         [Column("Number", Order = 1)]
-        public string Number { get; set; }
+        public string Number { get; set; } = null!;
 
         /// <summary>
         /// Дата поверки

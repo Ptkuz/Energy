@@ -28,7 +28,7 @@ namespace Energy.DAL.Entities
         /// <summary>
         /// Навигационное свойство <see cref="CounterEnergy"/>
         /// </summary>
-        public CounterEnergy? CounterEnergy { get; set; }
+        public CounterEnergy CounterEnergy { get; set; } = null!;
 
         /// <summary>
         /// Внешний ключ <see cref="CounterEnergy"/>
@@ -38,7 +38,7 @@ namespace Energy.DAL.Entities
         /// <summary>
         /// Навигационное свойство <see cref="CurrentTransformer"/>
         /// </summary>
-        public CurrentTransformer? CurrentTransformer { get; set; }
+        public CurrentTransformer CurrentTransformer { get; set; } = null!;
 
         /// <summary>
         /// Внешний ключ <see cref="CurrentTransformer"/>
@@ -48,7 +48,7 @@ namespace Energy.DAL.Entities
         /// <summary>
         /// Навигационное свойство <see cref="VoltageTransformer"/>
         /// </summary>
-        public VoltageTransformer? VoltageTransformer { get; set; }
+        public VoltageTransformer VoltageTransformer { get; set; } = null!;
 
         /// <summary>
         /// Внешний ключ <see cref="VoltageTransformer"/>
