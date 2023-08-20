@@ -1,6 +1,10 @@
+using AutoMapper;
 using Energy.DAL.Context;
 using Energy.DAL.Entities;
+using Energy.Services.Models;
 using Energy.Services.Services.Interfaces;
+using Energy.WebHost.RequestModels;
+using Energy.WebHost.RequestModels.Mapping;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Energy.WebHost.Controllers
@@ -21,10 +25,10 @@ namespace Energy.WebHost.Controllers
         }
 
         [HttpPost("AddNewMeasuringPoint")]
-        public async Task<IActionResult> AddNewMeasuringPoint()
+        public async Task<IActionResult> AddNewMeasuringPoint(AddNewMeasuringPointRequest addNewMeasuringPointRequest)
         {
-            MeasuringPoint measuringPoint = 
-                await _dataBaseService.AddNewPoint();
+            AddNewPointDto addNewPointDto = MappingRequests.MapAddNewMeasuringPointRequestAndAddNewPointDto(addNewMeasuringPointRequest);
+            MeasuringPoint measuringPoint = await _dataBaseService.AddNewPoint(addNewPointDto);
             return Ok(measuringPoint);
         }
 

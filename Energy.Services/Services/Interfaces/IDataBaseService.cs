@@ -1,5 +1,6 @@
 ﻿using Energy.DAL.Entities;
 using Energy.DAL.Entities.Base;
+using Energy.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Energy.Services.Services.Interfaces
 {
     public interface IDataBaseService
     {
-        Task<MeasuringPoint> AddNewPoint();
+        Task<MeasuringPoint> AddNewPoint(AddNewPointDto addNewPointDto);
 
         Task<IEnumerable<SettlementMeter>> GetSettlementMeters();
 
