@@ -8,7 +8,8 @@
 Использовался подход Code First и Entity Framework Core 7 для создания структуры базы данных. 
 Все сущности вынесены в отдельный проект, Energy.DAL.
 
-![image](https://github.com/Ptkuz/Energy/assets/43362172/efc92c7d-e406-4fc2-ae35-c44f91f3204f)
+![image](https://github.com/Ptkuz/Energy/assets/43362172/e9683765-1bbc-4ca6-9ce7-dc3ffaa8ede2)
+
 
 
 В результате получилась ER-диаграмма:
