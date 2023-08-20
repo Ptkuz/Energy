@@ -35,11 +35,11 @@ namespace Energy.Validations
         /// <param name="source">Проверяемая коллекция</param>
         /// <param name="argumentName">Имя аргумента</param>
         /// <exception cref="ArgumentNullOrEmptyException">Передается пустая коллекция</exception>
-        public static void CheckEnumerableNullOrEmpty<T>([NotNull] this IEnumerable<T>? source, string argumentName = emptyCollection)
+        public static void CheckEnumerableNullOrEmpty<T>([NotNull] this IEnumerable<T>? source, string argumentName, string message = emptyCollection)
         {
             if (source is null || !source.Any())
             {
-                throw new ArgumentNullOrEmptyException(argumentName ?? string.Empty, argumentName);
+                throw new ArgumentNullOrEmptyException(argumentName ?? string.Empty, message);
             }
         }
 
@@ -49,11 +49,11 @@ namespace Energy.Validations
         /// <param name="source">Проверяемая строка</param>
         /// <param name="argumentName">Имя аргумента</param>
         /// <exception cref="ArgumentNullOrEmptyException">Передается пустая строка</exception>
-        public static void CheckArgumentNullOrWhiteSpace([NotNull] this string? source, string argumentName = emptyString)
+        public static void CheckArgumentNullOrWhiteSpace([NotNull] this string? source, string argumentName, string message = emptyString)
         {
             if (String.IsNullOrWhiteSpace(source))
             {
-                throw new ArgumentNullOrEmptyException(argumentName ?? string.Empty, argumentName);
+                throw new ArgumentNullOrEmptyException(argumentName ?? string.Empty, message);
             }
         }
     }
