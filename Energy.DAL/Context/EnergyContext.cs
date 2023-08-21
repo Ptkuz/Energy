@@ -1,5 +1,6 @@
 ﻿using Energy.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Energy.DAL.Context
 {
@@ -8,6 +9,11 @@ namespace Energy.DAL.Context
     /// </summary>
     public class EnergyContext : DbContext
     {
+
+        /// <summary>
+        /// Логирование
+        /// </summary>
+        private readonly ILogger<EnergyContext> _logger;
 
         /// <summary>
         /// Объекты потребления DbSet<see cref="ConsumptionObject"/>>
@@ -67,11 +73,15 @@ namespace Energy.DAL.Context
         /// Конструктор инициализатор
         /// </summary>
         /// <param name="dbContext"></param>
-        public EnergyContext(DbContextOptions<EnergyContext> dbContext)
+        public EnergyContext(DbContextOptions<EnergyContext> dbContext, ILogger<EnergyContext> logger)
             : base(dbContext)
         {
+            _logger = logger;
+
             Database.EnsureDeleted();
             Database.EnsureCreated();
+
+            _logger.LogDebug("База данных создана и проинициализированна");
         }
 
         /// <summary>

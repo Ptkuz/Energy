@@ -1,7 +1,12 @@
 using Energy.DAL.Context;
 using Energy.Services;
 using Microsoft.EntityFrameworkCore;
+using NLog;
+using NLog.Web;
 using System.Text.Json.Serialization;
+using LogLevel = Microsoft.Extensions.Logging.LogLevel;
+
+var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +25,11 @@ if (String.IsNullOrEmpty(connectionString))
 }
 
 builder.Services.AddDbContext<EnergyContext>(options => options.UseSqlServer(connectionString), ServiceLifetime.Scoped);
+
+builder.Logging.ClearProviders();
+builder.Logging.SetMinimumLevel(LogLevel.Information);
+builder.Host.UseNLog();
+
 builder.Services.AddDataBaseServices(connectionString);
 builder.Services.AddControllers()
     .AddJsonOptions(options =>

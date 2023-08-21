@@ -57,14 +57,17 @@ namespace Energy.WebHost.Controllers
             {
                 AddNewPointDto addNewPointDto = MappingRequests.MapAddNewMeasuringPointRequestAndAddNewPointDto(addNewMeasuringPointRequest);
                 MeasuringPoint measuringPoint = await _dataBaseService.AddNewPoint(addNewPointDto);
+                _logger.LogInformation($"Успешно добавлена точка измерения c именем \"{measuringPoint.Name}\"", measuringPoint);
                 return Ok(new AddNewMeasuringPointResponse(measuringPoint));
             }
             catch (ArgumentNullException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return BadRequest(new AddNewMeasuringPointResponse(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return StatusCode(500, new AddNewMeasuringPointResponse(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
         }
@@ -82,10 +85,12 @@ namespace Energy.WebHost.Controllers
             {
                 IEnumerable<SettlementMeter> settlementMeters =
                     await _dataBaseService.GetSettlementMeters();
+                _logger.LogInformation($"Успешно выведены расчетные приборы в 2018 году", settlementMeters);
                 return Ok(new CollectionResponse<SettlementMeter>(settlementMeters));
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return StatusCode(500, new CollectionResponse<SettlementMeter>(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
         }
@@ -105,21 +110,24 @@ namespace Energy.WebHost.Controllers
             {
                 IEnumerable<CounterEnergy> counterEnergies =
                     await _dataBaseService.GetCounterEnergies(consumptionObjectName);
+                _logger.LogInformation($"Успешно выведены счетчики с закончившимся сроком поверке по объекту \"{consumptionObjectName}\"", counterEnergies);
                 return Ok(new CollectionResponse<CounterEnergy>(counterEnergies));
             }
             catch (ArgumentException ex)
             {
+                _logger.LogDebug(ex, ex.Message);
                 return BadRequest(new CollectionResponse<CounterEnergy>(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return StatusCode(500, new CollectionResponse<CounterEnergy>(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
         }
 
         /// <summary>
         /// По указанному объекту потребления выбрать все трансформаторы 
-        /// напряжения с закончившимся сроком поверке
+        /// тока с закончившимся сроком поверке
         /// Необходимо указать названия Объекта потребления. Для теста нужно указать:
         /// Тестовый объект потребления 7
         /// </summary>
@@ -132,21 +140,24 @@ namespace Energy.WebHost.Controllers
             {
                 IEnumerable<CurrentTransformer> currentTransformers =
                     await _dataBaseService.GetCurrentTransformers(consumptionObjectName);
+                _logger.LogInformation($"Успешно выведены трансформатры тока с закончившимся сроком поверке по объекту \"{consumptionObjectName}\"", currentTransformers);
                 return Ok(new CollectionResponse<CurrentTransformer>(currentTransformers));
             }
             catch (ArgumentException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return BadRequest(new CollectionResponse<CurrentTransformer>(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return StatusCode(500, new CollectionResponse<CurrentTransformer>(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
         }
 
 
         /// <summary>
-        /// По указанному объекту потребления выбрать все трансформаторы тока
+        /// По указанному объекту потребления выбрать все трансформаторы напряжения
         /// с закончившимся сроком поверке
         /// Необходимо указать названия Объекта потребления. Для теста нужно указать:
         /// Тестовый объект потребления 6
@@ -160,14 +171,17 @@ namespace Energy.WebHost.Controllers
             {
                 IEnumerable<VoltageTransformer> voltageTransformers =
                     await _dataBaseService.GetVoltageTransformers(consumptionObjectName);
+                _logger.LogInformation($"Успешно выведены трансформатры напряжения с закончившимся сроком поверке по объекту \"{consumptionObjectName}\"", voltageTransformers);
                 return Ok(new CollectionResponse<VoltageTransformer>(voltageTransformers));
             }
             catch (ArgumentException ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return BadRequest(new CollectionResponse<VoltageTransformer>(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, ex.Message);
                 return StatusCode(500, new CollectionResponse<VoltageTransformer>(new ErrorInfo(ex.Message, ex.StackTrace)));
             }
 
