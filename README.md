@@ -48,7 +48,8 @@
 
 Для теста использовался Swagger: 
 
-![image](https://github.com/Ptkuz/Energy/assets/43362172/93785e35-4129-4c9a-b6d6-f2426f9f56bb)
+![image](https://github.com/Ptkuz/Energy/assets/43362172/53b1c9f3-352d-4a24-a3dc-47120899c423)
+
 
 
 
