@@ -14,7 +14,7 @@ namespace Energy.DAL.Context
         /// <summary>
         /// Логирование
         /// </summary>
-        private readonly ILogger<EnergyContext> _logger;
+        private readonly ILogger<EnergyContext> _logger = null!;
 
         /// <summary>
         /// Объекты потребления DbSet<see cref="ConsumptionObject"/>>
