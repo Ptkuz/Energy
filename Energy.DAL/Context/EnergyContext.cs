@@ -1,4 +1,5 @@
 ﻿using Energy.DAL.Entities;
+using Energy.DAL.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -77,6 +78,8 @@ namespace Energy.DAL.Context
             : base(dbContext)
         {
             _logger = logger;
+
+            CheckEFConnection();
 
             Database.EnsureDeleted();
             Database.EnsureCreated();
@@ -159,6 +162,18 @@ namespace Energy.DAL.Context
             modelBuilder.Entity<MeasuringPoint>().HasData(ContextInitializer.MeasuringPoints);
             modelBuilder.Entity<SupplyPoint>().HasData(ContextInitializer.SupplyPoints);
             modelBuilder.Entity<SettlementMeter>().HasData(ContextInitializer.SettlementMeters);
+        }
+
+        private void CheckEFConnection() 
+        {
+            if (!Database.CanConnect())
+            {
+                string message = "Не удалось установить соединение с БД";
+                var exception = new EFConnectionException(message);
+
+                _logger.LogError(exception, message);
+                throw new EFConnectionException(message);
+            }
         }
     }
 }
